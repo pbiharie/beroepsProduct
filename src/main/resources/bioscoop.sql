@@ -29,9 +29,10 @@ CREATE TABLE `film` (
   `naam` varchar(255) NOT NULL,
   `genre` varchar(255) NOT NULL,
   `dimension_type` varchar(45) NOT NULL,
+  `prijs` double NOT NULL,
   PRIMARY KEY (`film_id`),
   UNIQUE KEY `film_id_UNIQUE` (`film_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=80 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -43,7 +44,8 @@ DROP TABLE IF EXISTS `filmvoorstelling`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `filmvoorstelling` (
   `filmvoorstelling_id` int NOT NULL AUTO_INCREMENT,
-  `start_datumtijd` datetime NOT NULL,
+  `start_datum` date NOT NULL,
+  `start_tijd` time NOT NULL,
   `film_id` int NOT NULL,
   `zaal_id` int NOT NULL,
   PRIMARY KEY (`filmvoorstelling_id`),
@@ -52,7 +54,7 @@ CREATE TABLE `filmvoorstelling` (
   KEY `fk_filmvoorstelling_zaal_idx` (`zaal_id`),
   CONSTRAINT `fk_filmvoorstelling_film` FOREIGN KEY (`film_id`) REFERENCES `film` (`film_id`),
   CONSTRAINT `fk_filmvoorstelling_zaal` FOREIGN KEY (`zaal_id`) REFERENCES `zaal` (`zaal_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -65,39 +67,14 @@ DROP TABLE IF EXISTS `kaart`;
 CREATE TABLE `kaart` (
   `kaart_id` int NOT NULL AUTO_INCREMENT,
   `kaart_nummer` int NOT NULL,
-  `prijs` double NOT NULL,
   `zitplaats_nummer` int NOT NULL,
   `verkoop_datum` date NOT NULL,
-  `werknemergegevens_id` int NOT NULL,
   `filmvoorstelling_id` int NOT NULL,
   PRIMARY KEY (`kaart_id`),
   UNIQUE KEY `kaart_id_UNIQUE` (`kaart_id`),
-  KEY `fk_kaart_werknemersgegevens_idx` (`werknemergegevens_id`),
   KEY `fk_kaart_filmvoorstelling_idx` (`filmvoorstelling_id`),
-  CONSTRAINT `fk_kaart_filmvoorstelling` FOREIGN KEY (`filmvoorstelling_id`) REFERENCES `filmvoorstelling` (`filmvoorstelling_id`),
-  CONSTRAINT `fk_kaart_werknemersgegevens` FOREIGN KEY (`werknemergegevens_id`) REFERENCES `werknemergegevens` (`werknemergegevens_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `werknemergegevens`
---
-
-DROP TABLE IF EXISTS `werknemergegevens`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `werknemergegevens` (
-  `werknemergegevens_id` int NOT NULL AUTO_INCREMENT,
-  `voornaam` varchar(255) NOT NULL,
-  `achternaam` varchar(255) NOT NULL,
-  `geboortedatum` date NOT NULL,
-  `adres` varchar(255) NOT NULL,
-  `gebruikersnaam` varchar(255) NOT NULL,
-  `wachtwoord` varchar(255) NOT NULL,
-  PRIMARY KEY (`werknemergegevens_id`),
-  UNIQUE KEY `credentials_id_UNIQUE` (`werknemergegevens_id`),
-  UNIQUE KEY `gebruikersnaam_UNIQUE` (`gebruikersnaam`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  CONSTRAINT `fk_kaart_filmvoorstelling` FOREIGN KEY (`filmvoorstelling_id`) REFERENCES `filmvoorstelling` (`filmvoorstelling_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -113,7 +90,7 @@ CREATE TABLE `zaal` (
   `aantal_zitplaatsen` int NOT NULL,
   PRIMARY KEY (`zaal_id`),
   UNIQUE KEY `zaal_id_UNIQUE` (`zaal_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -133,4 +110,4 @@ CREATE TABLE `zaal` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-06-02 18:58:12
+-- Dump completed on 2020-06-07 19:57:58

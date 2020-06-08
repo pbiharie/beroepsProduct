@@ -1,12 +1,12 @@
 package sr.unasat.beroeps.product.entities;
 
 public class Zaal {
-    private int id;
+    private int zaalId;
     private int zaalNummer;
     private int aantalZitPlaatsen;
 
-    public Zaal(int id, int zaalNummer, int aantalZitPlaatsen) {
-        this.id = id;
+    public Zaal(int zaalId, int zaalNummer, int aantalZitPlaatsen) {
+        this.zaalId = zaalId;
         this.zaalNummer = zaalNummer;
         this.aantalZitPlaatsen = aantalZitPlaatsen;
     }
@@ -14,6 +14,18 @@ public class Zaal {
     public Zaal(int zaalNummer, int aantalZitPlaatsen) {
         this.zaalNummer = zaalNummer;
         this.aantalZitPlaatsen = aantalZitPlaatsen;
+    }
+
+    public void setZaalNummer(int zaalNummer) {
+        this.zaalNummer = zaalNummer;
+    }
+
+    public void setAantalZitPlaatsen(int aantalZitPlaatsen) {
+        this.aantalZitPlaatsen = aantalZitPlaatsen;
+    }
+
+    public int getZaalId() {
+        return zaalId;
     }
 
     public int getZaalNummer() {
@@ -27,7 +39,7 @@ public class Zaal {
     @Override
     public String toString() {
         return "Zaal{" +
-                "id=" + id +
+                "id=" + zaalId +
                 ", zaalNummer=" + zaalNummer +
                 ", aantalZitPlaatsen=" + aantalZitPlaatsen +
                 '}';

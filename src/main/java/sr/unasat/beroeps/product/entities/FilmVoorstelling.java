@@ -1,34 +1,74 @@
 package sr.unasat.beroeps.product.entities;
 
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
+import java.time.LocalDate;
+import java.time.LocalTime;
 
 public class FilmVoorstelling {
     private int id;
-    private LocalDateTime startDatumTijd;
+    private LocalDate startDatum;
+    private LocalTime startTijd;
     private Film film;
     private Zaal zaal;
 
-    public FilmVoorstelling(LocalDateTime startDatumTijd, Film film, Zaal zaal) {
-        this.startDatumTijd = startDatumTijd;
+
+    public FilmVoorstelling(LocalDate startDatum, LocalTime startTijd, Film film, Zaal zaal) {
+        this.startDatum = startDatum;
+        this.startTijd = startTijd;
         this.film = film;
         this.zaal = zaal;
     }
 
-    public FilmVoorstelling(int id, LocalDateTime startDatumTijd, Film film, Zaal zaal) {
+    public FilmVoorstelling(int id, LocalDate startDatum, LocalTime startTijd, Film film, Zaal zaal) {
         this.id = id;
-        this.startDatumTijd = startDatumTijd;
+        this.startDatum = startDatum;
+        this.startTijd = startTijd;
         this.film = film;
         this.zaal = zaal;
     }
 
+    public int getId() {
+        return id;
+    }
+
+
+    public LocalDate getStartDatum() {
+        return startDatum;
+    }
+
+    public void setStartDatum(LocalDate startDatum) {
+        this.startDatum = startDatum;
+    }
+
+    public LocalTime getStartTijd() {
+        return startTijd;
+    }
+
+    public void setStartTijd(LocalTime startTijd) {
+        this.startTijd = startTijd;
+    }
+
+    public Film getFilm() {
+        return film;
+    }
+
+    public void setFilm(Film film) {
+        this.film = film;
+    }
+
+    public Zaal getZaal() {
+        return zaal;
+    }
+
+    public void setZaal(Zaal zaal) {
+        this.zaal = zaal;
+    }
 
     @Override
     public String toString() {
-        DateTimeFormatter format = DateTimeFormatter.ofPattern("MM-dd-yyyy hh:mm");
         return "FilmVoorstelling{" +
                 "id=" + id +
-                ", startDatumTijd=" + startDatumTijd.format(format) +
+                ", startDatum=" + startDatum +
+                ", startTijd=" + startTijd +
                 ", film=" + film +
                 ", zaal=" + zaal +
                 '}';

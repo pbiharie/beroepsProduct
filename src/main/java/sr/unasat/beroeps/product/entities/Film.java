@@ -2,21 +2,25 @@ package sr.unasat.beroeps.product.entities;
 
 public class Film {
     private int filmId;
-    private String filmName;
+    private String filmNaam;
     private String genre;
     private String dimensionType;
+    private double prijs;
 
-    public Film(int filmId, String filmName, String genre, String dimensionType) {
+    public Film(int filmId, String filmNaam, String genre, String dimensionType, double prijs) {
         this.filmId = filmId;
-        this.filmName = filmName;
+        this.filmNaam = filmNaam;
         this.genre = genre;
         this.dimensionType = dimensionType;
+        this.prijs = prijs;
     }
 
-    public Film(String filmNaam, String genre, String dimensionType) {
-        this.filmName = filmNaam;
+    public Film(String filmNaam, String genre, String dimensionType, double prijs) {
+        this.filmNaam = filmNaam;
         this.genre = genre;
         this.dimensionType = dimensionType;
+        this.prijs = prijs;
+
     }
 
     public Film(int filmId) {
@@ -27,8 +31,12 @@ public class Film {
         return filmId;
     }
 
-    public String getFilmName() {
-        return filmName;
+    public double getPrijs() {
+        return prijs;
+    }
+
+    public String getFilmNaam() {
+        return filmNaam;
     }
 
     public String getGenre() {
@@ -39,8 +47,8 @@ public class Film {
         return dimensionType;
     }
 
-    public void setFilmName(String filmName) {
-        this.filmName = filmName;
+    public void setFilmNaam(String filmNaam) {
+        this.filmNaam = filmNaam;
     }
 
     public void setGenre(String genre) {
@@ -51,13 +59,18 @@ public class Film {
         this.dimensionType = dimensionType;
     }
 
+    public void setPrijs(double prijs) {
+        this.prijs = prijs;
+    }
+
     @Override
     public String toString() {
         return "Film{" +
                 "filmId=" + filmId +
-                ", filmName='" + filmName + '\'' +
+                ", filmNaam='" + filmNaam + '\'' +
                 ", genre='" + genre + '\'' +
                 ", dimensionType='" + dimensionType + '\'' +
+                ", prijs=SRD" + prijs +
                 '}';
     }
 }
